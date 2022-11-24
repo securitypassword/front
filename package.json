@@ -1,8 +1,7 @@
 {
   "name": "react_login",
   "version": "0.1.0",
-  "homepage": "https://securitypassword.github.io/",
-  "proxy": "http://localhost:5000",
+  "homepage": "https://securitypassword.herokuapp.com/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
