@@ -15,6 +15,10 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0"
   },
+  "devServer": {
+    "compress2": true,
+    "disableHostCheck": true   // That solved it
+    }      ,
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
