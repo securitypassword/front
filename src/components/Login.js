@@ -74,7 +74,6 @@ const Login = () => {
         <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Iniciar Sesión</h1>
-            <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Usuario:</label>
                 <input
                     type="text"
@@ -93,7 +92,7 @@ const Login = () => {
                     value={pwd}
                     required
                 />
-                <button>Iniciar Sesión</button>
+                <button onClick={handleSubmit}>Iniciar Sesión</button>
                 <div className="persistCheck">
                     <input
                         type="checkbox"
@@ -103,7 +102,6 @@ const Login = () => {
                     />
                     <label htmlFor="persist">Confiar en este dispositivo</label>
                 </div>
-            </form>
             <p>
                 No tienes cuenta?<br />
                 <span className="line">
