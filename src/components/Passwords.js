@@ -12,13 +12,14 @@ const Passwords = async ()  => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    setPasswords(await axios.post(GPASSWORD_URL,
+    const responseGet = await axios.post(GPASSWORD_URL,
         JSON.stringify({id:users.id}),
         {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true
         }
-    ))
+    )
+    setPasswords(responseGet)
 
     useEffect(() => {
         let isMounted = true;
