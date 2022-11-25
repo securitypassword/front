@@ -2,9 +2,17 @@ import React, { Component }  from 'react';
 import { useState, useEffect } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useNavigate, useLocation } from "react-router-dom";
+const GPASSWORD_URL = 'https://securitypasswordapi.cyclic.app/getpass';
 
 const Passwords = () => {
-    const [users, setUsers, passwords] = useState();
+    const passwords  = await axios.post(GPASSWORD_URL,
+        JSON.stringify({title, users, pwd }),
+        {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true
+        }
+    );
+    const [users, setUsers] = useState();
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
