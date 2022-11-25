@@ -9,7 +9,7 @@ import Navbar from "./Navbar/Navbar";
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const NPASSWORD_URL = 'https://securitypasswordauth.cyclic.app/newpass';
 
-const NewPassword = () => {
+const NewPassword = async () => {
     const userRef = useRef();
     const errRef = useRef();
 
