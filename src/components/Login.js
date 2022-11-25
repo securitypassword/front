@@ -7,7 +7,7 @@ import useToggle from '../hooks/useToggle';
 
 import axios from '../api/axios';
 import Navbar from './Navbar/Navbar';
-const LOGIN_URL = '/auth';
+const LOGIN_URL = path.join(process.env.API_URL,'/auth');
 
 const Login = () => {
     const { setAuth } = useAuth();
