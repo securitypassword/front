@@ -8,6 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.1.19",
     "axios": "^0.24.0",
     "bootstrap": "^5.2.3",
+    "classname": "^0.0.0",
     "path": "^0.12.7",
     "react": "16.8",
     "react-dom": "16.8",
