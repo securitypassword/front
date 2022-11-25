@@ -4,7 +4,7 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Passwords = () => {
-    const [users, setUsers] = useState();
+    const [users, setUsers, passwords] = useState();
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,13 +26,12 @@ const Passwords = () => {
             }
         }
 
-        getPassword();
 
         return () => {
             isMounted = false;
             controller.abort();
         }
-    }, [])
+    }, [axiosPrivate, location, navigate, setUsers])
 
     return (
         <article>
