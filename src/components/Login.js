@@ -1,5 +1,4 @@
 import React, { Component }  from 'react';
-import path from "path"
 import { useRef, useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
