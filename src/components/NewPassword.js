@@ -58,7 +58,7 @@ const NewPassword = () => {
         }
         try {
             const response = await axios.post(NPASSWORD_URL,
-                JSON.stringify({ user, pwd }),
+                JSON.stringify({title, pwd, url}),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
