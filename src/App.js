@@ -11,18 +11,20 @@ import LinkPage from './components/LinkPage';
 import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
 import { Routes, Route } from 'react-router-dom';
+import Portal from './components/Portal';
+import Generator from './components/Generator/Generator';
 
 const ROLES = {
-  'User': 1,
+  'User': 2001,
   'Editor': 1984,
-  'Admin': 42
+  'Admin': 5150
 }
 
 function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path='/' element={<Portal />} />
         {/* public routes */}
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
@@ -32,13 +34,20 @@ function App() {
         {/* we want to protect these routes */}
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-            <Route path="/" element={<Home />} />
+            <Route path="home" element={<Home />} />
+          </Route>
+
+          <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+            <Route path="generator" element={<Generator />} />
+          </Route>
+
+          <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+            <Route path="vault" element={<Generator />} />
           </Route>
 
           <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
             <Route path="editor" element={<Editor />} />
           </Route>
-
 
           <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
             <Route path="admin" element={<Admin />} />
@@ -51,7 +60,6 @@ function App() {
 
         {/* catch all */}
         <Route path="*" element={<Missing />} />
-      </Route>
     </Routes>
   );
 }

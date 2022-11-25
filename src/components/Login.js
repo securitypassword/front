@@ -3,18 +3,17 @@ import useAuth from '../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 import useToggle from '../hooks/useToggle';
-import path from 'path';
 
 import axios from '../api/axios';
-const LOGIN_URL =  path.join(process.env.API_URL,'login');
-const LOGIN_ADMIN_URL = path.join(process.env.API_URL,'loginAdmin');
+import Navbar from './Navbar/Navbar';
+const LOGIN_URL = '/auth';
 
 const Login = () => {
     const { setAuth } = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/login";
 
     const userRef = useRef();
     const errRef = useRef();
@@ -36,68 +35,46 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            let roles = 0;
-            let accessToken = ""
-            let data = JSON.stringify({ name : user, password : pwd})
-            console.log("data",data)
             const response = await axios.post(LOGIN_URL,
-                data,
+                JSON.stringify({ user, pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
-            console.log(response.data)
-            if(response.data.msg=="login"){
-                roles=1
-                accessToken = response.data.data;
-            }
-            if(response.data.usu_rol==42){
-                console.log("login admin")
-                data = JSON.stringify({ token : accessToken})
-                console.log("data",data)
-                const responseadmin = await axios.post(LOGIN_ADMIN_URL,
-                    data,
-                    {
-                        headers: { 'Content-Type': 'application/json' },
-                        withCredentials: true
-                    }
-                );
-                console.log(responseadmin.data)
-                if(responseadmin.data=="admin"){
-                    roles=42
-                }
-            }
-            if(accessToken!=""){
-                setAuth({ user, pwd, roles, accessToken });
-                console.log(from)
-                navigate("/lounge", { replace: true });
-            }else{
-                resetUser();
-                setPwd('');
-            }
+            const accessToken = response?.data?.accessToken;
+            const roles = response?.data?.roles;
+            setAuth({ user, pwd, roles, accessToken });
+            resetUser();
+            setPwd('');
+            navigate(from, { replace: true });
         } catch (err) {
-            console.log("login error")
             if (!err?.response) {
-                setErrMsg('No Server Response');
+                setErrMsg('No hay respuesta del servidor');
             } else if (err.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
+                setErrMsg('Ingresar todos los parametros');
             } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
+                setErrMsg('Acceso no autorizado');
             } else {
-                setErrMsg('Login Failed');
+                setErrMsg('Falla al iniciar sesión');
             }
             errRef.current.focus();
         }
     }
 
     return (
-
+        <>
+        <Navbar />
+        <br />
+        <br />
+        <br />
+        <br />
+        <center>
         <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Sign In</h1>
+            <h1>Iniciar Sesión</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="username">Usuario:</label>
                 <input
                     type="text"
                     id="username"
@@ -107,7 +84,7 @@ const Login = () => {
                     required
                 />
 
-                <label htmlFor="password">Password:</label>
+                <label htmlFor="password">Contraseña Maestra:</label>
                 <input
                     type="password"
                     id="password"
@@ -115,7 +92,7 @@ const Login = () => {
                     value={pwd}
                     required
                 />
-                <button>Sign In</button>
+                <button>Iniciar Sesión</button>
                 <div className="persistCheck">
                     <input
                         type="checkbox"
@@ -123,16 +100,21 @@ const Login = () => {
                         onChange={toggleCheck}
                         checked={check}
                     />
-                    <label htmlFor="persist">Trust This Device</label>
+                    <label htmlFor="persist">Confiar en este dispositivo</label>
                 </div>
             </form>
             <p>
-                Need an Account?<br />
+                No tienes cuenta?<br />
                 <span className="line">
-                    <Link to="/register">Sign Up</Link>
+                    <Link to="/register">Registrate aquí</Link>
                 </span>
             </p>
-        </section>
+            </section>   
+        </center>
+ 
+        </>
+
+
 
     )
 }

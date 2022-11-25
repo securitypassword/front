@@ -3,7 +3,6 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Users = () => {
-    console.log("users")
     const [users, setUsers] = useState();
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
@@ -32,7 +31,7 @@ const Users = () => {
             isMounted = false;
             controller.abort();
         }
-    }, [axiosPrivate, navigate, location])
+    }, [])
 
     return (
         <article>
