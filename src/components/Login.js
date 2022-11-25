@@ -45,7 +45,7 @@ const Login = () => {
             );
             console.log("login response",response)
             const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
+            const roles = response?.data?.roles[0];
             console.log("login setAuth",{ user, pwd, roles, accessToken })
             setAuth({ user, pwd, roles, accessToken });
             resetUser();
