@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Passwords from './components/Passwords';
 import Layout from './components/Layout';
+import NewPassword from './components/NewPassword';
 import Editor from './components/Editor';
 import Admin from './components/Admin';
 import Missing from './components/Missing';
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
             <Route path="passwords" element={<Passwords />} />
+          </Route>
+          <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+            <Route path="newpassword" element={<NewPassword />} />
           </Route>
 
           <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>

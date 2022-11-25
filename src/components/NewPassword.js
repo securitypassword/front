@@ -25,6 +25,14 @@ const NewPassword = () => {
     const [validMatch, setValidMatch] = useState(false);
     const [matchFocus, setMatchFocus] = useState(false);
 
+    const [url, setURL] = useState('');
+    const [validURL, setValidURL] = useState(false);
+    const [urlFocus, setURLFocus] = useState(false);
+
+    const [title, setTitle] = useState('');
+    const [validTitle, setValidTitle] = useState(false);
+    const [titleFocus, setTitleFocus] = useState(false);
+
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
