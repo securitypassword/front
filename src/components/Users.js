@@ -32,7 +32,7 @@ const Users = () => {
             isMounted = false;
             controller.abort();
         }
-    }, [])
+    }, [axiosPrivate, navigate, location])
 
     return (
         <article>
