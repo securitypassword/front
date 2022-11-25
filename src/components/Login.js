@@ -14,7 +14,7 @@ const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/login";
+    const from = location.state?.from?.pathname || "/vault";
 
     const userRef = useRef();
     const errRef = useRef();
@@ -45,7 +45,7 @@ const Login = () => {
             );
             console.log("login response",response)
             const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles[0];
+            const roles = response?.data?.roles;
             console.log("login setAuth",{ user, pwd, roles, accessToken })
             setAuth({ user, pwd, roles, accessToken });
             resetUser();
