@@ -7,7 +7,7 @@ import useToggle from '../hooks/useToggle';
 
 import axios from '../api/axios';
 import Navbar from './Navbar/Navbar';
-const LOGIN_URL = process.env.API_URL+'/auth';
+const LOGIN_URL = 'https://securitypasswordauth.cyclic.app/auth';
 
 const Login = () => {
     const { setAuth } = useAuth();
