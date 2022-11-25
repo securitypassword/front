@@ -43,6 +43,7 @@ const Login = () => {
                     withCredentials: true
                 }
             );
+            console.log("login response",response)
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
             setAuth({ user, pwd, roles, accessToken });
