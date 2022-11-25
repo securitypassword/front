@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const NPASSWORD_URL = path.join(process.env.API_URL,'/newpassword');
+const NPASSWORD_URL = process.env.API_URL+'/newpassword';
 
 const NewPassword = () => {
     const userRef = useRef();
