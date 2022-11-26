@@ -30,7 +30,7 @@ async function getPass(){
       })
       if(queryget.data!=""){
         var changeTable=""
-        resJson=JSON.parse(data)
+        resJson=JSON.parse(queryget.data)
 
         var table=document.getElementById("getPassTable")
         table.innerHTML=""

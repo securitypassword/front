@@ -2,6 +2,7 @@ import React, { Component, startTransition } from 'react'
 import {Button} from 'react-native'
 import RandomPass from './RandomPass';
 import $ from 'jquery'
+import axios from '../api/axios';
 import InputGroup from 'react-bootstrap/InputGroup';
 import {en,de} from "./sec"
 import './GetPass.css'
@@ -35,7 +36,7 @@ async function NewPass(vars) {
       )
     
   }
-  function savePass(){
+  async function savePass(){
     var usu_id=de(varsGet.vars.usu_id)
     var pass=$("#genPass").val()
     var name=$("#newPassName").val()
@@ -45,7 +46,7 @@ async function NewPass(vars) {
       pass=en(pass)
       name=en(name)
       const response = await axios.post(NPASSWORD_URL,
-        JSON.stringify({title, pwd, url}),
+        JSON.stringify({name, pass, url:"https://www.google.com"}),
             {
                 headers: { 'Content-Type': 'application/json' },
                 withCredentials: true
