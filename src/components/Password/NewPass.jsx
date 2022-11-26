@@ -1,8 +1,8 @@
 import React, { Component, startTransition } from 'react'
-import {Button} from 'react-native'
+import {Button} from 'react-native-web'
 import RandomPass from './RandomPass';
 import $ from 'jquery'
-import axios from '../api/axios';
+import axios from '../../api/axios';
 import InputGroup from 'react-bootstrap/InputGroup';
 import {en,de} from "./sec"
 import './GetPass.css'
