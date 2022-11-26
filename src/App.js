@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
-import Passwords from './components/Passwords';
+import Pass from './components/Password/Pass';
 import Layout from './components/Layout';
 import NewPassword from './components/NewPassword';
 import Editor from './components/Editor';
@@ -43,13 +43,9 @@ function App() {
           <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
             <Route path="generator" element={<Generator />} />
           </Route>
-          <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-            <Route path="passwords" element={<Passwords />} />
+          <Route element={<RequireAuth parms={[ROLES.User]} />}>
+            <Route path="passwords" element={<Pass />} />
           </Route>
-          <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-            <Route path="newpassword" element={<NewPassword />} />
-          </Route>
-
           <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
             <Route path="vault" element={<Generator />} />
           </Route>
