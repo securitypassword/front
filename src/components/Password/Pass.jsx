@@ -2,9 +2,6 @@ import React, { Component} from 'react'
 import { useState, useEffect } from "react";
 import NewPass from './NewPass';
 import GetPass from './GetPass';
-import {
-  useParams
-} from "react-router-dom";
 
 async function Pass(vars){
   const [users, setUsers] = useState();
