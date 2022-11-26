@@ -1,6 +1,7 @@
 import React, { Component }  from 'react';
 import { useState, useEffect } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import 'react-bootstrap/Table'
 import axios from '../api/axios';
 import { useNavigate, useLocation } from "react-router-dom";
 const GPASSWORD_URL = 'https://securitypasswordapi.cyclic.app/getpass';
