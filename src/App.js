@@ -4,7 +4,6 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Pass from './components/Password/Pass';
 import Layout from './components/Layout';
-import NewPassword from './components/NewPassword';
 import Editor from './components/Editor';
 import Admin from './components/Admin';
 import Missing from './components/Missing';
