@@ -1,4 +1,5 @@
 import React, { Component} from 'react'
+import { useState, useEffect } from "react";
 import NewPass from './NewPass';
 import GetPass from './GetPass';
 import {
