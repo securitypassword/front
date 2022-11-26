@@ -6,7 +6,7 @@ import {en,de,safe} from "./sec"
 import './GetPass.css'
 
 var varsGet=""
-function GetPass(vars){
+async function GetPass(vars){
   varsGet=vars
     return (
       <div className="getpass">
@@ -16,7 +16,7 @@ function GetPass(vars){
     )
   
 }
-function getPass(){
+async function getPass(){
   var usu_id=de(varsGet.vars.usu_id)
   usu_id=parseInt(usu_id)  
   var resJson=""

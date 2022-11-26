@@ -6,7 +6,7 @@ import {
   useParams
 } from "react-router-dom";
 
-function Pass(vars){
+async function Pass(vars){
   const [users, setUsers] = useState();
   const parms = {vars:{usu_id:users.id}}
     return (

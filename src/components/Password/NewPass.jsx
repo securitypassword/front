@@ -10,7 +10,7 @@ const NPASSWORD_URL = 'https://securitypasswordauth.cyclic.app/newpass';
 
 var varsGet=""
 
-function NewPass(vars) {
+async function NewPass(vars) {
   varsGet=vars
       return (
         <center>
