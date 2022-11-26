@@ -7,14 +7,14 @@ import useToggle from '../hooks/useToggle';
 
 import axios from '../api/axios';
 import Navbar from './Navbar/Navbar';
-const LOGIN_URL = 'https://securitypasswordauth.cyclic.app/vault';
+const LOGIN_URL = 'https://securitypasswordauth.cyclic.app/auth';
 
 const Login = () => {
     const { setAuth } = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/passwords";
+    const from = location.state?.from?.pathname || "/vault";
 
     const userRef = useRef();
     const errRef = useRef();
